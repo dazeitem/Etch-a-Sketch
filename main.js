@@ -16,3 +16,13 @@ let generateName = () => {
     };
     return className;
 };
+
+// Create rows
+function createRows() {
+    for (i=0; i!=17; i++) {
+        let className = generateName();
+        rowDiv.push(className);
+        const row = document.createElement("div");
+        row.classList.add(className, "row");
+    };
+};
