@@ -6,7 +6,7 @@ let pixels = [];
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
 // Import sketch body
-const sketchBody = document.querySelector(".drawbody");
+const sketchBody = document.querySelector(".drawBody");
 
 // Generate random className
 let generateName = () => {
