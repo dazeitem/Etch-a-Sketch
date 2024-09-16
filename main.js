@@ -26,3 +26,12 @@ function createRows() {
         row.classList.add(className, "row");
     };
 };
+
+// Generate Pixels
+function createPixel() {
+    // Push className to of list classes and appendchild to div
+    let className = generateName();
+    pixels.push(className);
+    const pixel = document.createElement("div");
+    pixel.classList.add(className, "pixel");
+}
