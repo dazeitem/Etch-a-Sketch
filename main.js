@@ -42,6 +42,7 @@ function createGrid() {
 }
 
 createGrid()
+
 // Set up buttons
 const buttons = document.querySelector('.btn')
 buttons.addEventListener("click", (e) => {
