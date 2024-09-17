@@ -33,3 +33,12 @@ function createPixel() {
     pixels.push(pixel)
 }
 
+// Push className to of list classes and appendchild to div
+function createGrid() {
+    for (i=0; i<pixelsPerRow*pixelsPerRow; i++) {
+        // Fetch parent class and append
+        createPixel()
+    }
+}
+
+createGrid()
