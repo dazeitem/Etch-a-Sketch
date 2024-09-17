@@ -42,3 +42,22 @@ function createGrid() {
 }
 
 createGrid()
+// Set up buttons
+const buttons = document.querySelector('.btn')
+buttons.addEventListener("click", (e) => {
+    let btnName = e.target.id
+    console.log(btnName)
+    if (btnName == "clear") {
+        for (let pixel of pixels) {
+            pixel.style.backgroundColor = ""
+        };
+    } else if (btnName == "newGrid") {
+        btnName = ''
+        sketchBody.replaceChildren()
+        pixelsPerRow = window.prompt("How long should each side of the grid be?")
+        sketchLength = pixelRadius*pixelsPerRow
+        sketchBody.setAttribute("style",
+            `width: ${sketchLength}px; height: ${sketchLength}px`)
+        createGrid()
+    };
+});
