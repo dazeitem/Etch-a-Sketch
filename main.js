@@ -15,8 +15,21 @@ sketchBody.setAttribute("style",
 // Generate Pixels
 function createPixel() {
     // Push className to of list classes and appendchild to div
-    let className = generateName();
-    pixels.push(className);
-    const pixel = document.createElement("div");
-    pixel.classList.add(className, "pixel");
+    let pixel = document.createElement("div");
+    pixel.classList.add("pixel");
+    pixel.setAttribute("style", "width: 15px; height: 15px; margin: 0px; padding: 0px;")
+
+    // Fetch parent class and append
+    sketchBody.appendChild(pixel)
+
+    // Event Listener 
+    pixel.addEventListener("mouseover", () => {
+        pixel.style.backgroundColor = "grey"
+    });
+    pixel.addEventListener('mouseout', function() {   
+    });
+
+    // push pixels to list
+    pixels.push(pixel)
 }
+
