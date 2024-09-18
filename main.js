@@ -1,23 +1,33 @@
 // Initialize lists and variables
-const pixelRadius = 15
-let pixelsPerRow = window.prompt("How long should each side of the grid be?")
-let sketchLength = pixelRadius*pixelsPerRow
+let pixelsPerRow
+const bodySize = 500
 let pixels = [];
 
 // Import Alphabet for generating random class names
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
+// Create sketch body 
+function setPixelSize() {
+    pixelsPerRow = window.prompt("How long should each side of the grid be?")
+    if (pixelsPerRow>50) {
+        pixelsPerRow = 50
+    } else if (pixelsPerRow<10) {
+        pixelsPerRow = 10
+    }
+    return Math.floor(bodySize/pixelsPerRow)
+    /* sketchBody.setAttribute("style",
+         `width: ${bodySize}px; height: ${bodySize}px`) */
+}
+
 // Import sketch body
 const sketchBody = document.querySelector(".drawBody");
-sketchBody.setAttribute("style",
-    `width: ${sketchLength}px; height: ${sketchLength}px`)
 
 // Generate Pixels
-function createPixel() {
+function createPixel(pixelSize) {
     // Push className to of list classes and appendchild to div
     let pixel = document.createElement("div");
     pixel.classList.add("pixel");
-    pixel.setAttribute("style", "width: 15px; height: 15px; margin: 0px; padding: 0px;")
+    pixel.setAttribute("style", `width: ${pixelSize}px; height: ${pixelSize}px; margin: 0px; padding: 0px;`)
 
     // Fetch parent class and append
     sketchBody.appendChild(pixel)
@@ -35,9 +45,10 @@ function createPixel() {
 
 // Push className to of list classes and appendchild to div
 function createGrid() {
+    let pixelSize = setPixelSize()
     for (i=0; i<pixelsPerRow*pixelsPerRow; i++) {
         // Fetch parent class and append
-        createPixel()
+        createPixel(pixelSize)
     }
 }
 
@@ -55,10 +66,6 @@ buttons.addEventListener("click", (e) => {
     } else if (btnName == "newGrid") {
         btnName = ''
         sketchBody.replaceChildren()
-        pixelsPerRow = window.prompt("How long should each side of the grid be?")
-        sketchLength = pixelRadius*pixelsPerRow
-        sketchBody.setAttribute("style",
-            `width: ${sketchLength}px; height: ${sketchLength}px`)
         createGrid()
     };
 });
